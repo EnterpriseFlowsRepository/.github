@@ -1,0 +1,16 @@
+name: clean artifacts
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  clean:
+    runs-on: [self-hosted, Linux]
+    steps:
+
+      # https://github.com/marketplace/actions/github-actions-artifact-cleaner
+      - name: cleanup
+        uses: glassechidna/artifact-cleaner@master
+        with:
+          minimumAge: 7884000 # all artifacts at least 3 months old
